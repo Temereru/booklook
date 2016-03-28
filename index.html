@@ -25,29 +25,45 @@
 
 <div class="container">
    <div class="row">
+      <img id="loading-image" src="img/loading.gif"/>
       <div class="col-xs-10 col-xs-offset-1 books">
          <script id="entry-template" type="text/x-handlebars-template">
-            <h2>{{ title }}</h2>
-            <p>{{ description }}</p>
-            <div>
-               {{#each authors}}
-                  <h3>Written by: {{ this }}</h3>
-               {{/each}}
-            </div>
-            <img src="{{ url }}" alt="Cover">
-            <p>Amount of pages: {{ pageCount }}</p>
+            {{#each books}}
+              <h2>{{ this.title }}</h2>
+              <p>{{ this.description }}</p>
+              <div>
+                 {{#each this.authors}}
+                    <h3>Written by: {{ this }}</h3>
+                 {{/each}}
+              </div>
+              <img src="{{ this.url }}" alt="Cover">
+              <p>Amount of pages: {{ this.pageCount }}</p>
+            {{/each}}
          </script>
       </div>
    </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
    <div class="row">
       <div class="col-xs-10 col-xs-offset-1">
          <h2>Search by ISBN</h2>
          <form>
            <div class="form-group">
              <input type="text" class="form-control" id="isbn" placeholder="ISBN number">
+           </div>
+           <button type="search" class="btn btn-primary">Search</button>
+        </form>
+      </div>
+   </div>
+</div> -->
+<div class="container">
+   <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+         <h2>Search by name</h2>
+         <form>
+           <div class="form-group">
+             <input type="text" class="form-control" id="name" placeholder="Book Name">
            </div>
            <button type="search" class="btn btn-primary">Search</button>
         </form>
